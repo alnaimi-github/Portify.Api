@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\Settings\" />
+    <Folder Include="Data\Context\" />
+    <Folder Include="Data\Configurations\" />
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="External\GitHub\" />
+    <Folder Include="External\Email\" />
+    <Folder Include="External\Storage\" />
+    <Folder Include="Logging\Serilog\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Repositories\Implementations\" />
+    <Folder Include="Repositories\Base\" />
+    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Services\BackgroundJobs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Portify.Application\Portify.Application.csproj" />
+  </ItemGroup>
+
+</Project>

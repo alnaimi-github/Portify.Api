@@ -1,0 +1,6 @@
+@Portify.API_HostAddress = http://localhost:5083
+
+GET {{Portify.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
