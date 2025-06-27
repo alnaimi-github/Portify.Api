@@ -51,4 +51,5 @@ jobs:
           if ls TestResults/*.trx 1> /dev/null 2>&1; then
             echo "Test results are available as artifacts." >> $GITHUB_STEP_SUMMARY
           else
-            echo "No test results found." >> $GITHUB_STEP_SUMMARY 
+            echo "No test results found." >> $GITHUB_STEP_SUMMARY
+          fi
