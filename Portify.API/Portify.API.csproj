@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Portify.Application\Portify.Application.csproj" />
+    <ProjectReference Include="..\Portify.Infrastructure\Portify.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
