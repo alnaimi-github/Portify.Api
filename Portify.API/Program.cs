@@ -1,9 +1,13 @@
-using Portify.API.Startup;
+using Portify.API;
+using Portify.API.Extensions;
+using Portify.Infrastructure.Extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Configure services using ServiceConfiguration
-ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration, builder.Environment);
+
+builder.Services
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices(builder.Configuration);
 
 WebApplication app = builder.Build();
 
