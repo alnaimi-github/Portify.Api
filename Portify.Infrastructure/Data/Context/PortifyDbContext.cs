@@ -3,7 +3,8 @@ using Portify.Domain.Entities;
 
 namespace Portify.Infrastructure.Data.Context;
 
-public class PortifyDbContext(DbContextOptions<PortifyDbContext> options) : DbContext(options)
+public sealed class PortifyDbContext(DbContextOptions<PortifyDbContext> options)
+    : DbContext(options)
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<Repository> Repositories => Set<Repository>();

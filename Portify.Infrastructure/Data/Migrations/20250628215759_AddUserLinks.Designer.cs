@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Portify.Infrastructure.Data.Context;
@@ -11,9 +12,11 @@ using Portify.Infrastructure.Data.Context;
 namespace Portify.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(PortifyDbContext))]
-    partial class PortifyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250628215759_AddUserLinks")]
+    partial class AddUserLinks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
