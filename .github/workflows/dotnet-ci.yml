@@ -12,7 +12,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+    
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -26,14 +29,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
+      # 🛑 Merge conflict detection step (only for pull requests)
+      - name: Check for merge conflicts with target branch
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          git checkout ${{ github.head_ref }}
+          git merge --no-commit --no-ff origin/${{ github.base_ref }} || {
+            echo "❌ Merge conflict detected with ${{ github.base_ref }} branch!"
+            exit 1
+          }
+
       - name: Restore dependencies
         run: dotnet restore Portify.sln
 
       - name: Build
         run: dotnet build Portify.sln --no-restore --configuration Release
 
-      # The following step runs tests and outputs results as .trx files.
-      # .trx files can be viewed using Visual Studio or tools like ReportGenerator for HTML reports.
       - name: Run tests
         run: dotnet test Portify.sln --no-build --configuration Release --logger "trx;LogFileName=test_results.trx" --results-directory TestResults
 
