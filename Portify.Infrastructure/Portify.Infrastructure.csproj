@@ -23,9 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Portify.Application\Portify.Application.csproj" />
   </ItemGroup>
 

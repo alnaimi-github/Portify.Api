@@ -1,10 +1,9 @@
+using Portify.API.Startup;
+
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// Configure services using ServiceConfiguration
+ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration, builder.Environment);
 
 WebApplication app = builder.Build();
 

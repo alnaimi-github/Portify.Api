@@ -1,4 +1,4 @@
-root = true
+﻿root = true
 
 # C# files
 [*.cs]
@@ -280,3 +280,16 @@ dotnet_diagnostic.CA2327.severity = none
 
 # IDE0046: Convert to conditional expression
 dotnet_diagnostic.IDE0046.severity = none
+
+# IDE0058: Expression value is never used
+dotnet_diagnostic.IDE0058.severity = none
+
+# IDE0058: Expression body is never used
+dotnet_diagnostic.IDE0022.severity = none
+
+
+# Default severity for all analyzer diagnostics
+dotnet_analyzer_diagnostic.severity = none
+
+dotnet_analyzer_diagnostic.category-Style.severity = none
+
