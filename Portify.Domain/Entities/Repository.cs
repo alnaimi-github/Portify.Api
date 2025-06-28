@@ -3,14 +3,21 @@ namespace Portify.Domain.Entities;
 public sealed class Repository
 {
     public Guid Id { get; private set; }
+    public Guid UserId { get; private set; }
+    public int GitHubId { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
-
-    public string? ImageUrl { get; private set; }
-    public string? GitHubUrl { get; private set; }
-    public string? LiveDemoUrl { get; private set; }
-
-    public Guid UserId { get; private set; }
+    public string? Language { get; private set; }
+    public int Stars { get; private set; } = 0;
+    public int Forks { get; private set; } = 0;
+    public bool Private { get; private set; } = false;
+    public string? ReadmeContent { get; private set; }
+    public string? Technologies { get; private set; }
+    public string? Url { get; private set; }
+    public string? Homepage { get; private set; }
+    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+    public DateTime UpdatedAt { get; private set; } = DateTime.UtcNow;
+    public DateTime? LastSync { get; private set; }
 
     // Private constructor for EF Core
     private Repository() { }
@@ -18,35 +25,59 @@ public sealed class Repository
     // Factory method for creating a Repository
     public static Repository Create(
         Guid id,
+        Guid userId,
+        int gitHubId,
         string name,
         string description,
-        Guid userId,
-        string? imageUrl = null,
-        string? gitHubUrl = null,
-        string? liveDemoUrl = null) =>
+        string? language = null,
+        int stars = 0,
+        int forks = 0,
+        bool isPrivate = false,
+        string? readmeContent = null,
+        string? technologies = null,
+        string? url = null,
+        string? homepage = null) =>
         new()
         {
             Id = id,
+            UserId = userId,
+            GitHubId = gitHubId,
             Name = name,
             Description = description,
-            UserId = userId,
-            ImageUrl = imageUrl,
-            GitHubUrl = gitHubUrl,
-            LiveDemoUrl = liveDemoUrl
+            Language = language,
+            Stars = stars,
+            Forks = forks,
+            Private = isPrivate,
+            ReadmeContent = readmeContent,
+            Technologies = technologies,
+            Url = url,
+            Homepage = homepage
         };
 
-    // Method to update the repository details
+    // Method to update repository details
     public void UpdateDetails(
         string name,
         string description,
-        string? imageUrl = null,
-        string? gitHubUrl = null,
-        string? liveDemoUrl = null)
+        string? language = null,
+        int stars = 0,
+        int forks = 0,
+        bool isPrivate = false,
+        string? readmeContent = null,
+        string? technologies = null,
+        string? url = null,
+        string? homepage = null)
     {
         Name = name;
         Description = description;
-        ImageUrl = imageUrl;
-        GitHubUrl = gitHubUrl;
-        LiveDemoUrl = liveDemoUrl;
+        Language = language;
+        Stars = stars;
+        Forks = forks;
+        Private = isPrivate;
+        ReadmeContent = readmeContent;
+        Technologies = technologies;
+        Url = url;
+        Homepage = homepage;
+        UpdatedAt = DateTime.UtcNow;
     }
+
 }
