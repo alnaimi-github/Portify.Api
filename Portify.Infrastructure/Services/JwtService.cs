@@ -11,16 +11,16 @@ using Microsoft.IdentityModel.Tokens;
 using Portify.Application.Interfaces;
 using Portify.Infrastructure.Configuration.Settings;
 
-namespace Portify.Domain.Services
+namespace Portify.Infrastructure.Services
 {
     public class JwtService : IJwtService
     {
         private readonly JwtSettings _settings;
 
-    public JwtService(IOptions<JwtSettings> options)
-    {
-        _settings = options.Value;
-    }
+        public JwtService(IOptions<JwtSettings> options)
+        {
+            _settings = options.Value;
+        }
         public string GenerateToken(Guid userId, string email, string[] roles)
         {
             
