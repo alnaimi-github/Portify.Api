@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -7,14 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Context\" />
-    <Folder Include="Data\Configurations\" />
-    <Folder Include="Data\Migrations\" />
     <Folder Include="External\GitHub\" />
     <Folder Include="External\Email\" />
     <Folder Include="External\Storage\" />
     <Folder Include="Logging\Serilog\" />
-    <Folder Include="Extensions\" />
     <Folder Include="Repositories\Implementations\" />
     <Folder Include="Repositories\Base\" />
     <Folder Include="Repositories\Interfaces\" />
@@ -28,6 +24,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Portify.Application\Portify.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\**" />
+    <None Remove="extensions\**" />
   </ItemGroup>
 
 </Project>

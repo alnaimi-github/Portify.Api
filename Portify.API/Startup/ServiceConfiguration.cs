@@ -4,6 +4,9 @@ using Portify.Infrastructure.Configuration.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using Portify.Domain.Interfaces;
+using Portify.Persistence.Data.Context;
 
 namespace Portify.API.Startup;
 
@@ -25,17 +28,20 @@ public class ServiceConfiguration
         AddAuthentication(services, configuration);
         // Add other shared services here
         AddServices(services);
+        AddDatabase(services, configuration);
 
 
     }
 
     private static void ConfigureDevelopmentServices(IServiceCollection services, IConfiguration configuration)
+        // ReSharper disable once ArrangeMethodOrOperatorBody
     {
         services.AddOptions<GitHubOAuthConfig>().Configure(options => configuration.GetSection(nameof(GitHubOAuthConfig)).Bind(options));
         services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
     }
 
     private static void ConfigureProductionServices(IServiceCollection services, IConfiguration configuration)
+        // ReSharper disable once ArrangeMethodOrOperatorBody
     {
         services.AddOptions<GitHubOAuthConfig>().Configure(options => configuration.GetSection(nameof(GitHubOAuthConfig)).Bind(options));
         services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
@@ -43,10 +49,10 @@ public class ServiceConfiguration
 
     private static void AddAuthentication(IServiceCollection services, IConfiguration configuration)
     {
-        var jwtSettingsSection = configuration.GetSection(nameof(JwtSettings));
+        IConfigurationSection jwtSettingsSection = configuration.GetSection(nameof(JwtSettings));
         services.Configure<JwtSettings>(jwtSettingsSection);
 
-        var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+        JwtSettings? jwtSettings = jwtSettingsSection.Get<JwtSettings>();
 
         services.AddAuthentication(options =>
         {
@@ -72,10 +78,19 @@ public class ServiceConfiguration
         services.AddAuthorization();
     }
 
-    private static void AddServices(IServiceCollection services)
+      private static void AddDatabase(IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IJwtService, JwtService>();
+        string? connectionString = configuration.GetConnectionString("DefaultConnection");
+
+        services.AddDbContext<PortifyDbContext>(options =>
+        {
+
+          options.UseNpgsql(connectionString);
+        });
+
+        services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<PortifyDbContext>());
     }
 
-
+    private static void AddServices(IServiceCollection services)
+        => services.AddScoped<IJwtService, JwtService>();
 }
