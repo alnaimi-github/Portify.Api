@@ -7,7 +7,7 @@ namespace Portify.Persistence.extensions;
 
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
             string? connectionString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<PortifyDbContext>(options =>
