@@ -18,6 +18,10 @@
     <ProjectReference Include="..\Portify.Domain\Portify.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="extensions\" />
+  </ItemGroup>
+
 
 
 </Project>

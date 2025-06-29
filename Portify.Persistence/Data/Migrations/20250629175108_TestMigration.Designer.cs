@@ -2,18 +2,21 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Portify.Persistence.Data.Context;
 
 #nullable disable
 
-namespace Portify.Infrastructure.Data.Migrations
+namespace Portify.Persistence.Data.Migrations
 {
     [DbContext(typeof(PortifyDbContext))]
-    partial class PortifyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250629175108_TestMigration")]
+    partial class TestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

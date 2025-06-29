@@ -3,9 +3,9 @@ namespace Portify.Domain.Entities;
 public sealed class User
 {
     public Guid Id { get; private set; }
-    public int GitHubId { get; private set; }
-    public string UserName { get; private set; }
-    public string Email { get; private set; }
+    public required int GitHubId { get; set; }
+    public required string UserName { get; set; }
+    public required string Email { get; set; }
     public string? AvatarUrl { get; private set; }
     public string? Bio { get; private set; }
     public string? Location { get; private set; }
@@ -26,7 +26,7 @@ public sealed class User
     public DateTime? LastLogin { get; private set; }
     public bool IsActive { get; private set; } = true;
 
-    private readonly List<UserLink> _links = [];
+    private readonly List<UserLink> _links = new List<UserLink>();
     public IReadOnlyCollection<UserLink> Links => _links.AsReadOnly();
 
     // Private constructor for EF Core

@@ -3,10 +3,10 @@ namespace Portify.Domain.Entities;
 public sealed class Repository
 {
     public Guid Id { get; private set; }
-    public Guid UserId { get; private set; }
-    public int GitHubId { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
+    public required Guid UserId { get; set; }
+    public required int GitHubId { get; set; }
+    public required string Name { get; set; }
+    public required string Description { get; set; }
     public string? Language { get; private set; }
     public int Stars { get; private set; } = 0;
     public int Forks { get; private set; } = 0;
@@ -79,5 +79,4 @@ public sealed class Repository
         Homepage = homepage;
         UpdatedAt = DateTime.UtcNow;
     }
-
 }
