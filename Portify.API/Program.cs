@@ -1,6 +1,11 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Portify.API.Startup;
+using Portify.Infrastructure.Configuration.Settings;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
 
 // Configure services using ServiceConfiguration
 ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration, builder.Environment);
@@ -14,6 +19,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

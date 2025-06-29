@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\Settings\" />
     <Folder Include="Data\Context\" />
     <Folder Include="Data\Configurations\" />
     <Folder Include="Data\Migrations\" />
@@ -20,6 +19,11 @@
     <Folder Include="Repositories\Base\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Services\BackgroundJobs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.12.1" />
   </ItemGroup>
 
   <ItemGroup>
