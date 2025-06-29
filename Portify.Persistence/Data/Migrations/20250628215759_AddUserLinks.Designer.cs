@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Portify.Infrastructure.Data.Context;
+using Portify.Persistence.Data.Context;
 
 #nullable disable
 
 namespace Portify.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(PortifyDbContext))]
-    [Migration("20250628222248_AddFieldsRepositoriesTable")]
-    partial class AddFieldsRepositoriesTable
+    [Migration("20250628215759_AddUserLinks")]
+    partial class AddUserLinks
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,65 +31,27 @@ namespace Portify.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<int>("Forks")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0);
-
-                    b.Property<int>("GitHubId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Homepage")
+                    b.Property<string>("GitHubUrl")
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
 
-                    b.Property<string>("Language")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                    b.Property<string>("ImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
-                    b.Property<DateTime?>("LastSync")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("LiveDemoUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
-
-                    b.Property<bool>("Private")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("ReadmeContent")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Stars")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(0);
-
-                    b.Property<string>("Technologies")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("timestamp with time zone")
-                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
-
-                    b.Property<string>("Url")
-                        .HasMaxLength(500)
-                        .HasColumnType("character varying(500)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
@@ -107,71 +69,10 @@ namespace Portify.Infrastructure.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("AccessToken")
-                        .HasColumnType("text");
-
-                    b.Property<string>("AvatarUrl")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Bio")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Blog")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Company")
-                        .HasColumnType("text");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
-
-                    b.Property<int>("Followers")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Following")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("GitHubId")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
-
-                    b.Property<DateTime?>("LastLogin")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime?>("LastSync")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("text");
-
-                    b.Property<bool>("OnboardingCompleted")
-                        .HasColumnType("boolean");
-
-                    b.Property<string>("Preferences")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("PublicRepos")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("RefreshToken")
-                        .HasColumnType("text");
-
-                    b.Property<Guid?>("SubscriptionId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("TokenExpiresAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserName")
                         .IsRequired()

@@ -56,9 +56,33 @@ public sealed class User
             Blog = blog
         };
 
-    public void UpdateUserName(string userName) => UserName = userName;
-    public void UpdateEmail(string email) => Email = email;
-    public void AddLink(UserLink link) => _links.Add(link);
-    public void UpdatePreferences(string preferences) => Preferences = preferences;
-    public void MarkAsInactive() => IsActive = false;
+    public void UpdateUserName(string userName)
+    {
+        UserName = userName;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void UpdateEmail(string email)
+    {
+        Email = email;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void AddLink(UserLink link)
+    {
+        _links.Add(link);
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void UpdatePreferences(string preferences)
+    {
+        Preferences = preferences;
+        UpdatedAt = DateTime.UtcNow;
+    }
+
+    public void MarkAsInactive()
+    {
+        IsActive = false;
+        UpdatedAt = DateTime.UtcNow;
+    }
 }

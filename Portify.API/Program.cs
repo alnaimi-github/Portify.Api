@@ -1,6 +1,6 @@
 using Portify.API;
-using Portify.API.Extensions;
-using Portify.Infrastructure.Extensions;
+using Portify.API.extensions;
+using Portify.Persistence.extensions;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 

@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Portify.Infrastructure.Data.Context;
+using Portify.Persistence.Data.Context;
 
-namespace Portify.Infrastructure.Extensions;
+namespace Portify.Persistence.extensions;
 
     public static class DependencyInjection
     {

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Portify.Domain.Entities;
 
-namespace Portify.Infrastructure.Data.Context;
+namespace Portify.Persistence.Data.Context;
 
 public sealed class PortifyDbContext(DbContextOptions<PortifyDbContext> options)
     : DbContext(options)

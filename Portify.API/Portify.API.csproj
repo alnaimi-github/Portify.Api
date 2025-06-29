@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Portify.Infrastructure\Portify.Infrastructure.csproj" />
+    <ProjectReference Include="..\Portify.Persistence\Portify.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

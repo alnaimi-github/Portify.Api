@@ -5,15 +5,15 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Portify.Infrastructure.Data.Context;
+using Portify.Persistence.Data.Context;
 
 #nullable disable
 
 namespace Portify.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(PortifyDbContext))]
-    [Migration("20250628165857_Initial")]
-    partial class Initial
+    [Migration("20250628202250_AddRepositoryOptionalLinks")]
+    partial class AddRepositoryOptionalLinks
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,6 +35,15 @@ namespace Portify.Infrastructure.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("GitHubUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LiveDemoUrl")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

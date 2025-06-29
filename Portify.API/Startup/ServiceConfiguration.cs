@@ -21,11 +21,13 @@ public class ServiceConfiguration
     }
 
     private static void ConfigureDevelopmentServices(IServiceCollection services, IConfiguration configuration)
+        // ReSharper disable once ArrangeMethodOrOperatorBody
     {
         services.AddOptions<GitHubOAuthConfig>().Configure(options => configuration.GetSection(nameof(GitHubOAuthConfig)).Bind(options));
     }
 
     private static void ConfigureProductionServices(IServiceCollection services, IConfiguration configuration)
+        // ReSharper disable once ArrangeMethodOrOperatorBody
     {
         services.AddOptions<GitHubOAuthConfig>().Configure(options => configuration.GetSection(nameof(GitHubOAuthConfig)).Bind(options));
     }

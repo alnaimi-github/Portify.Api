@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Portify.Domain.Entities;
 
-namespace Portify.Infrastructure.Data.Configurations;
+namespace Portify.Persistence.Data.Configurations;
 
 public sealed class RepositoryConfiguration : IEntityTypeConfiguration<Repository>
 {

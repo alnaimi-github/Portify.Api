@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
     <Folder Include="External\GitHub\" />
     <Folder Include="External\Email\" />
     <Folder Include="External\Storage\" />
@@ -19,19 +18,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Microsoft.EntityFrameworkCore">
-      <HintPath>C:\Users\alnym\.nuget\packages\microsoft.entityframeworkcore\9.0.6\lib\net8.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Portify.Application\Portify.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.6" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.6" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+    <Compile Remove="Data\**" />
+    <Compile Remove="extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="extensions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\**" />
+    <None Remove="extensions\**" />
   </ItemGroup>
 
 </Project>

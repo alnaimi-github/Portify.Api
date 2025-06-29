@@ -1,4 +1,4 @@
-namespace Portify.API.Extensions;
+namespace Portify.API.extensions;
 
 public static class DependencyInjection
 {
