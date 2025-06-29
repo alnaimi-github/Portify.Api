@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Portify.API.Startup;
@@ -5,6 +6,7 @@ using Portify.Infrastructure.Configuration.Settings;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+#region Configure JWT Authentication & Authorization
 
 var jwtSettingsSection = builder.Configuration.GetSection(nameof(JwtSettings));
 builder.Services.Configure<JwtSettings>(jwtSettingsSection);
@@ -14,6 +16,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(options =>
 {
@@ -31,6 +34,10 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
+
+#endregion
+
+
 
 // Configure services using ServiceConfiguration
 ServiceConfiguration.ConfigureServices(builder.Services, builder.Configuration, builder.Environment);
