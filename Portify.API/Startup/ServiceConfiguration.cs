@@ -1,4 +1,6 @@
-﻿using Portify.Infrastructure.Configuration.Settings;
+﻿using Portify.Application.Interfaces;
+using Portify.Domain.Services;
+using Portify.Infrastructure.Configuration.Settings;
 
 namespace Portify.API.Startup;
 
@@ -18,11 +20,14 @@ public class ServiceConfiguration
         // Common services for all environments
         services.AddControllers();
         // Add other shared services here
+        services.AddScoped<IJwtService, JwtService>();
+
     }
 
     private static void ConfigureDevelopmentServices(IServiceCollection services, IConfiguration configuration)
     {
         services.AddOptions<GitHubOAuthConfig>().Configure(options => configuration.GetSection(nameof(GitHubOAuthConfig)).Bind(options));
+        services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
     }
 
     private static void ConfigureProductionServices(IServiceCollection services, IConfiguration configuration)
