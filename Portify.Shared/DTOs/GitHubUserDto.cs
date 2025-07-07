@@ -2,14 +2,14 @@ using System;
 
 namespace Portify.Shared.DTOs
 {
-    public sealed record GitHubRepoDto(
+    public sealed record GitHubUserDto(
         int Id,
-        string Name,
-        string Description,
-        string Language,
-        int Stars,
-        int Forks,
-        bool Private,
-        string HtmlUrl
+        string Login,
+        string Email,
+        string AvatarUrl,
+        string Bio,
+        string Location,
+        string Company,
+        string Blog
     );
 }
