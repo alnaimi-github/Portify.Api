@@ -12,7 +12,7 @@ public class JwtService(IOptions<JwtSettings> options) : IJwtService
 {
     private readonly JwtSettings _settings = options.Value;
 
-    public string GenerateToken(Guid userId, string email, string[] roles)
+    public string GenerateToken(Guid userId, string? email, string[] roles)
     {
 
         var claims = new List<Claim>
