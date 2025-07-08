@@ -1,6 +1,11 @@
-@Portify.API_HostAddress = http://localhost:5083
+@Portify_API_HostAddress = https://localhost:7001
 
-GET {{Portify.API_HostAddress}}/weatherforecast/
-Accept: application/json
+# Portify API Endpoints
+# GitHub Login Endpoint
+@state = abc123xyz
+@code = variable value
+GET {{Portify_API_HostAddress}}/auth/github-login?state={{state}}
+# GitHub Callback Endpoint
+# GitHub Login Endpoint with Code
+# This endpoint is used to handle the callback from GitHub after user authentication
 
-###
