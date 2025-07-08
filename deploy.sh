@@ -1,19 +1,18 @@
+#!/bin/bash
+set -ex
 
 # Install Docker if not installed
 if ! command -v docker &> /dev/null; then
   echo "Docker not found. Installing Docker..."
-  # For Amazon Linux 2:
   sudo yum update -y
-  sudo amazon-linux-extras install docker -y
-  sudo service docker start
-  sudo usermod -a -G docker ec2-user
+  sudo yum install -y yum-utils
+  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+  sudo yum install -y docker-ce docker-ce-cli containerd.io
+  sudo systemctl enable docker
+  sudo systemctl start docker
+  sudo usermod -aG docker ec2-user
   # You may need to reboot or log out/in for group changes to take effect
 fi
-
-#!/bin/bash
-set -ex
-
-# Docker install block as above...
 
 cd /home/ec2-user/project
 
